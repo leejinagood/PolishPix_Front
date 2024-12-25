@@ -14,7 +14,8 @@
 }
 
 .logo_img{
-  width: 300px;
+  width: 230px;
+  height: 150px;
 }
 .menu-table{
   margin-left:auto; 
@@ -24,4 +25,9 @@
   width: 30px;
   margin-left: 60px;
   margin-right: 60px;
+}
+
+.menu-button{
+  background-color: #ffffff;
+  border: none;
 }

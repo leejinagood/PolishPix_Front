@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 //이미지
 import LogoImage from './image/PolishPix3.png';
@@ -16,16 +18,17 @@ import PictureComponent from './component/picture';
 import './App.css';
 
 function App() {
-  const [content, setContent] = useState();
+  const [content, setContent] = useState('Picture');
 
-  //메뉴 클릭 이벤트
+  //메뉴 버튼 클릭 이벤트
   const menuClickButton = e => {
     const { name } = e.target;
     setContent(name);
   };
 
   //객체 생성
-  const selectComponent = {
+  //렌더링 할 컴포넌트
+  const menuComponent = {
     Marker: <MarkerComponent />,
     Search: <SearchComponent />,
     User: <UserComponent />,
@@ -35,38 +38,41 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={LogoImage} className="logo_img" alt="logo" />
+          <img src={LogoImage} className="logo_img" alt="logo" />
         <table className='menu-table'>
-          <td>
-            <button onClick={menuClickButton} name='Picture' >
-              <img src={IconPicture} className="icon"/>
-            </button>
-          </td>
+          <tr>
+            {/* 버튼마다 onClick 이벤트 할당 */}
+            <td>
+              <button className="menu-button" onClick={menuClickButton} name='Picture' >
+                <img src={IconPicture} className="icon"/>
+              </button>
+            </td>
 
-          <td>
-            <button onClick={menuClickButton} name='Marker' >
-              <img src={IconMarker} className="icon"/>
-            </button>
-          </td>
-          
-          <td>
-            <button onClick={menuClickButton} name='Search' >
-              <img src={IconSearch} className="icon"/>
-            </button>
-          </td>
+            <td>
+              <button className="menu-button" onClick={menuClickButton} name='Marker' >
+                <img src={IconMarker} className="icon"/>
+              </button>
+            </td>
+            
+            <td>
+              <button className="menu-button" onClick={menuClickButton} name='Search' >
+                <img src={IconSearch} className="icon"/>
+              </button>
+            </td>
 
-          <td>
-            <button onClick={menuClickButton} name='User' >
-              <img src={IconUser} className="icon"/>
-            </button>
-          </td>
+            <td>
+              <button className="menu-button" onClick={menuClickButton} name='User' >
+                <img src={IconUser} className="icon"/>
+              </button>
+            </td>
+          </tr>
         </table>
 
-        <content>{selectComponent[content]}</content>
+        <br />
+        {menuComponent[content]}
       
       </header>
 
-        
     </div>
   );
 }

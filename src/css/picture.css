@@ -1,0 +1,20 @@
+
+.image-grid {
+    width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개의 열 */
+    gap: 0px; 
+}
+  
+.thumb {
+    height: 300px;
+    width: 300px;
+    margin: 5px; /* 이미지가 셀 크기에 맞게 조정되도록 */
+    object-fit: cover; /* 이미지 비율 유지 */
+}
+  
+.thumb:hover {
+    border-radius: 10%;
+    cursor: pointer;
+}
