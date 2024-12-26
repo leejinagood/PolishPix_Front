@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "SejongGeulggot";
+  font-weight: normal;
+  src: url("./fonts/SejongGeulggot.otf") format("truetype");
+}
+
+body {
+  font-family: "SejongGeulggot";
+}
+
 .App {
   text-align: center;
 }
@@ -30,4 +40,5 @@
 .menu-button{
   background-color: #ffffff;
   border: none;
+  cursor: pointer;
 }
