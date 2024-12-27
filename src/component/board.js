@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import '../css/board.css';
-import Userprofile from '../image/userprofile.png'
-import Likes from '../image/NomalHeart.jpg'
+import Userprofile from '../image/userprofile.png';
+import Likes from '../image/NomalHeart.jpg';
+import ClickLikes from '../image/ClickHeart.jpg'
 import CommentComponent from '../component/comment';
+import { useNavigate } from "react-router-dom";
 
 function Board() {
   const location = useLocation();
   const { postId } = location.state || {}; // 전달받은 state
   const [data, setData] = useState(null); // 데이터를 저장할 상태
   const [currentIndex, setCurrentIndex] = useState(0); // 현재 보여주는 이미지 인덱스
+  const navigate = useNavigate(); // 페이지 이동을 위한 hook
 
   useEffect(() => {
     axios
@@ -40,6 +43,9 @@ function Board() {
     );
   };
 
+  const handleImageClick = (userId) => {
+    navigate('/user', { state: { userId} }); // state를 통해 데이터 전달
+  };
   return (
     <div className='Board'>
       {/* 이미지 슬라이드 */}
@@ -66,16 +72,21 @@ function Board() {
         
         <div className='Content'>
           {data.user.user_profile === "" ? (
-            <img src={Userprofile} className="userProfile" />
+            <img src={Userprofile} className="userProfile" onClick={() => handleImageClick(data.user.user_id)}/>
           ) : (
-            <img src={data.user.user_profile} className="userProfile" />
+            <img src={data.user.user_profile} className="userProfile" onClick={() => handleImageClick(data.user.user_id)}/>
           )}
 
           <p>{data.user.user_name}</p>
           <p style={{ fontSize: '16px', whiteSpace: "pre-wrap", maxWidth: '300px' }}>{data.post_content}</p>
           <p style={{ fontSize: '16px' }}>{data.insert_date}</p>
 
-          <img className='LikesButton' src={Likes}/>
+          
+          <img className='LikesButton' src={Likes}/> 
+
+          <br />
+          <img className='LikesButton' src={ClickLikes}/>
+          
         </div>
       </div>
       <br />
