@@ -13,8 +13,10 @@ import MarkerComponent from './component/marker';
 import SearchComponent from './component/search';
 import UserComponent from './component/user';
 import LoginComponent from './component/login';
+import SignupComponent from './component/signup';
 import PictureComponent from './component/picture';
-import BoardComponent from './component/board';  // BoardComponent 추가
+import BoardComponent from './component/board'; 
+
 
 import './App.css';
 
@@ -73,6 +75,7 @@ function App() {
           <Route path="/search" element={<SearchComponent />} />
           <Route path="/user" element={<UserComponent />} />
           <Route path="/login" element={<LoginComponent />} />
+          <Route path="/signup" element={<SignupComponent />} />
           <Route path="/picture" element={<PictureComponent />} />
           <Route path="/board" element={<BoardComponent />} />
         </Routes>

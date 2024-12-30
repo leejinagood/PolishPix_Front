@@ -12,7 +12,7 @@
   flex-grow: 6;
 }
 .form-wrapper{
-    filter: opacity(55%);
+  filter: opacity(100%);
 }
 
 .login-text{
