@@ -25,11 +25,12 @@ function App() {
   const [content, setContent] = useState('Picture'); // 상태 초기화
 
   // 메뉴 버튼 클릭 이벤트
-  const menuClickButton = e => {
-    const { name } = e.target;
-    setContent(name); // 상태 업데이트
-    // 버튼 클릭 시 해당 라우트로 네비게이션
-    navigate(`/${name.toLowerCase()}`);
+  const menuClickButton = (e) => {
+    const name = e.currentTarget.getAttribute('name'); // currentTarget에서 name 가져오기
+    if (name) {
+      setContent(name);
+      navigate(`/${name.toLowerCase()}`);
+    }
   };
 
   const logoClickHandler = () => {
@@ -40,33 +41,35 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={LogoImage} className="logo_img" alt="logo" onClick={logoClickHandler}/>
-        <table className='menu-table'>
-          <tr>
-            <td>
-              <button className="menu-button" onClick={menuClickButton} name='Picture'>
-                <img src={IconPicture} className="icon" />
-              </button>
-            </td>
-            <td>
-              <button className="menu-button" onClick={menuClickButton} name='Marker'>
-                <img src={IconMarker} className="icon" />
-              </button>
-            </td>
-            <td>
-              <button className="menu-button" onClick={menuClickButton} name='Search'>
-                <img src={IconSearch} className="icon" />
-              </button>
-            </td>
-            <td>
-              <button className="menu-button" onClick={menuClickButton} name='User'>
-                <img src={IconUser} className="icon" />
-              </button>
-            </td>
-          </tr>
-        </table>
-
-        <br />
+        <div className="fixed-header"> {/* 고정 헤더 */}
+          <img src={LogoImage} className="logo_img" alt="logo" onClick={logoClickHandler}/>
+          <table className='menu-table'>
+            <tr>
+              <td>
+                <button className="menu-button" onClick={menuClickButton} name='Picture'>
+                  <img src={IconPicture} className="icon" />
+                </button>
+              </td>
+              <td>
+                <button className="menu-button" onClick={menuClickButton} name='Marker'>
+                  <img src={IconMarker} className="icon" />
+                </button>
+              </td>
+              <td>
+                <button className="menu-button" onClick={menuClickButton} name='Search'>
+                  <img src={IconSearch} className="icon" />
+                </button>
+              </td>
+              <td>
+                <button className="menu-button" onClick={menuClickButton} name='User'>
+                  <img src={IconUser} className="icon" />
+                </button>
+              </td>
+            </tr>
+          </table>
+          <br />
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
 
         {/* Routes 설정 */}
         <Routes>

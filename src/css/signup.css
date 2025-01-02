@@ -3,3 +3,9 @@
     text-align: center;
     margin: 0 50px 20px ;
 }
+.error{
+    font-size: 15px;
+    text-align: center;
+    margin: 5px;
+    color: red;
+}

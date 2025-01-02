@@ -35,7 +35,7 @@ function User() {
 
   // 사용자 데이터나 콘텐츠 데이터가 로드되지 않았을 때 로딩 메시지 표시
   if (!userData || !contentData) {
-    return <div>Loading...</div>;
+     return <div>Loading...</div>;
   }
 
   // 이미지 클릭 핸들러
