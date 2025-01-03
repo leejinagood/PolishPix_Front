@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Cookies } from 'react-cookie';
 import Userprofile from '../image/userprofile.png';
 import '../css/user.css';
 
@@ -10,7 +11,15 @@ function User() {
   const [userData, setUserData] = useState(null); // 사용자 데이터를 저장할 상태
   const [contentData, setContentData] = useState(null); // 콘텐츠 데이터를 저장할 상태
   const { userId } = location.state || {}; // 전달받은 state에서 userId 추출
-  
+  const cookies = new Cookies(); // Cookies 객체 생성
+
+  useEffect(() => {
+    const Token = cookies.get('LoginToken');
+    if (Token == null){
+      return navigate('/login');
+    }
+  }, );
+
   useEffect(() => {
     if (userId) {
       axios
@@ -33,10 +42,18 @@ function User() {
     }
   }, [userId]); // userId가 변경될 때마다 실행
 
-  // 사용자 데이터나 콘텐츠 데이터가 로드되지 않았을 때 로딩 메시지 표시
-  if (!userData || !contentData) {
-     return <div>Loading...</div>;
+
+  // useEffect(() => {
+  //   const Token = cookies.get('LoginToken');
+  //   if (Token == null || !userData || !contentData) {
+  //     return navigate('/login');
+  //   }
+  // }, [userData, contentData, navigate]); // userData나 contentData가 변경될 때마다 실행
+
+  if( !userData || !contentData){
+    return <p>Loading..</p>
   }
+  
 
   // 이미지 클릭 핸들러
   const handleImageClick = (postId) => {

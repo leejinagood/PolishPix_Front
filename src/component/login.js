@@ -2,9 +2,11 @@ import '../css/login.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import {Cookies} from 'react-cookie';
 
 function Login() {
   const navigate = useNavigate(); // 페이지 이동을 위한 hook
+  const cookies = new Cookies(); // 쿠키값
 
   // 상태 관리
   const [formData, setFormData] = useState({
@@ -23,15 +25,25 @@ function Login() {
     const { email, password } = formData;
 
     try {
-      const response = await axios.post('http://localhost:8080/login/${email}&${password}', {
+      // POST 요청으로 email과 password 전송
+      const response = await axios.post('http://localhost:8080/login', {
         email,
-        password
+        password,
       });
-      console.log('서버 응답:', response.data);
-      // navigate('/');
+      const message = response.data; // 서버에서 반환된 메시지
+
+      if (message === "이메일이 존재하지 않습니다." || message === "비밀번호가 다릅니다.") {
+        alert(message); 
+      }else{
+        // 토큰 저장
+        cookies.set('LoginToken', message, { path: '/', maxAge: 3600 }); //유효시간은 1시간 설정 
+        alert('로그인 성공!');
+        navigate('/');
+      }
+
     } catch (error) {
-      alert('회원가입 실패');
       console.error('에러:', error.response?.data || error.message);
+      alert('로그인 실패. 다시 시도해주세요.');
     }
   };
 
@@ -41,10 +53,10 @@ function Login() {
   };
 
   return (
-    <div class="root">
-        <div class="signin-wrapper form active">
-            <div class="form-wrapper">
-            <h5 class="login-text">로그인 하세요</h5>
+    <div className="root">
+        <div className="signin-wrapper form active">
+            <div className="form-wrapper">
+            <h5 className="login-text">로그인 하세요</h5>
             <input
             type="text"
             name="email"
@@ -61,8 +73,8 @@ function Login() {
             value={formData.password}
             onChange={handleChange}
             />
-            <button class="button primary" onClick={handleLogin}>Sign In</button>
-            <button class="button secondary" onClick={() => handleSignupClick()} >Sign Up</button>
+            <button className="button primary" onClick={handleLogin}>Sign In</button>
+            <button className="button secondary" onClick={() => handleSignupClick()} >Sign Up</button>
             </div>
         </div>
     </div>

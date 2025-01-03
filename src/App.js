@@ -16,6 +16,7 @@ import LoginComponent from './component/login';
 import SignupComponent from './component/signup';
 import PictureComponent from './component/picture';
 import BoardComponent from './component/board'; 
+import ProfileComponent from './component/profile'; 
 
 
 import './App.css';
@@ -44,28 +45,32 @@ function App() {
         <div className="fixed-header"> {/* 고정 헤더 */}
           <img src={LogoImage} className="logo_img" alt="logo" onClick={logoClickHandler}/>
           <table className='menu-table'>
-            <tr>
-              <td>
-                <button className="menu-button" onClick={menuClickButton} name='Picture'>
-                  <img src={IconPicture} className="icon" />
-                </button>
-              </td>
-              <td>
-                <button className="menu-button" onClick={menuClickButton} name='Marker'>
-                  <img src={IconMarker} className="icon" />
-                </button>
-              </td>
-              <td>
-                <button className="menu-button" onClick={menuClickButton} name='Search'>
-                  <img src={IconSearch} className="icon" />
-                </button>
-              </td>
-              <td>
-                <button className="menu-button" onClick={menuClickButton} name='User'>
-                  <img src={IconUser} className="icon" />
-                </button>
-              </td>
-            </tr>
+            <thead></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <button className="menu-button" onClick={menuClickButton} name='Picture'>
+                    <img src={IconPicture} className="icon" />
+                  </button>
+                </td>
+                <td>
+                  <button className="menu-button" onClick={menuClickButton} name='Marker'>
+                    <img src={IconMarker} className="icon" />
+                  </button>
+                </td>
+                <td>
+                  <button className="menu-button" onClick={menuClickButton} name='Search'>
+                    <img src={IconSearch} className="icon" />
+                  </button>
+                </td>
+                <td>
+                  <button className="menu-button" onClick={menuClickButton} name='Profile'>
+                    <img src={IconUser} className="icon" />
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot></tfoot>
           </table>
           <br />
         </div>
@@ -81,6 +86,7 @@ function App() {
           <Route path="/signup" element={<SignupComponent />} />
           <Route path="/picture" element={<PictureComponent />} />
           <Route path="/board" element={<BoardComponent />} />
+          <Route path="/profile" element={<ProfileComponent />} />
         </Routes>
       </header>
     </div>
