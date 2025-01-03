@@ -90,6 +90,7 @@ function Board() {
         </div>
       </div>
       <br />
+      <hr className="hr"/>
       <CommentComponent />
     </div>
    

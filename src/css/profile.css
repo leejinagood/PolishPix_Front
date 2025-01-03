@@ -1,0 +1,59 @@
+.MyProfile{
+    height: 200px;
+    border-radius: 50%;
+    margin: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    left : -150px;
+    position:relative;
+}
+.MyInfo{
+    display: inline-block;
+    position:relative;
+    left : -10px;
+    top: -50px;
+}
+.select{
+    display: inline-block;
+    margin-left: 40px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+.selecttext{
+    font-size: 15px;
+    display: inline-block;
+}
+.selectimg{
+    width: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+
+.UpdateButton {
+    font-family: "SejongGeulggot";
+    background-color: rgb(246, 204, 208);
+    color: rgb(0, 0, 0); /* 흰색 텍스트 */
+    border: none; /* 테두리 제거 */
+    padding: 10px 20px; /* 버튼 내부 여백 */
+    text-align: center; /* 텍스트 정렬 */
+    text-decoration: none; /* 밑줄 제거 */
+    display: inline-block; /* 인라인-블록 속성 */
+    font-size: 16px; /* 글꼴 크기 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서를 포인터로 변경 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 애니메이션 효과 */
+}
+  
+.UpdateButton:hover {
+    background-color: rgb(226, 187, 191);
+    transform: scale(1.05); /* 약간 커짐 효과 */
+}
+  
+.UpdateButton:active {
+    background-color: rgb(213, 184, 187);
+    transform: scale(0.95); /* 클릭 시 약간 작아짐 */
+}
+  

@@ -5,3 +5,8 @@
     border: 1px solid rgb(0, 0, 0);
     cursor: pointer;
 }
+
+.hr{
+    margin: 0 auto;
+    width: 1100px;
+}

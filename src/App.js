@@ -18,7 +18,6 @@ import PictureComponent from './component/picture';
 import BoardComponent from './component/board'; 
 import ProfileComponent from './component/profile'; 
 
-
 import './App.css';
 
 function App() {
