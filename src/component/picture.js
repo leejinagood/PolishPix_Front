@@ -14,7 +14,7 @@ function Picture() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/Contetnt/view") // API 요청
+      .get(`${process.env.REACT_APP_API_URL}/Content/view`) // API 요청
       .then((response) => {
         setPosts(response.data.reverse()); // 데이터를 역순으로 저장
       })

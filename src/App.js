@@ -17,6 +17,9 @@ import SignupComponent from './component/signup';
 import PictureComponent from './component/picture';
 import BoardComponent from './component/board'; 
 import ProfileComponent from './component/profile'; 
+import ProfileUppdateComponent from './component/profileUpdate'; 
+import WriteComponent from './component/write'; 
+
 
 import './App.css';
 
@@ -86,6 +89,8 @@ function App() {
           <Route path="/picture" element={<PictureComponent />} />
           <Route path="/board" element={<BoardComponent />} />
           <Route path="/profile" element={<ProfileComponent />} />
+          <Route path="/profileUpdate" element={<ProfileUppdateComponent />} />
+          <Route path="/write" element={<WriteComponent />} />
         </Routes>
       </header>
     </div>

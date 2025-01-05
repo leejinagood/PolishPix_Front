@@ -20,7 +20,7 @@ function User() {
     if (!token) {
       navigate('/login'); // 토큰이 없을 경우 
     } else {
-      axios.post('http://localhost:8080/token', { token })
+      axios.post(`${process.env.REACT_APP_API_URL}/token`, { token })
         .then(response => {
           const { _id } = response.data;
           setTokenUserId(_id); // 응답값으로 받은 id를 상태에 저장
@@ -38,7 +38,7 @@ function User() {
   useEffect(() => {
       if (userId) {
         axios
-          .get(`http://localhost:8080/User/${userId}`) // 첫 번째 API 요청
+          .get(`${process.env.REACT_APP_API_URL}/User/${userId}`) // 첫 번째 API 요청
           .then((response) => {
             setUserData(response.data); // 사용자 데이터 상태에 저장
           })
@@ -50,7 +50,7 @@ function User() {
   useEffect(() => {
     if (userId) {
       axios
-        .get(`http://localhost:8080/Contetnt/user/${userId}`) // 두 번째 API 요청
+        .get(`${process.env.REACT_APP_API_URL}/Content/user/${userId}`) // 두 번째 API 요청
         .then((response) => {
           setContentData(response.data); // 콘텐츠 데이터 상태에 저장
         })

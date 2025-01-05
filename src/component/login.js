@@ -26,7 +26,7 @@ function Login() {
 
     try {
       // POST 요청으로 email과 password 전송
-      const response = await axios.post('http://localhost:8080/login', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
         email,
         password,
       });

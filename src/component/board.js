@@ -17,7 +17,7 @@ function Board() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/Contetnt/${postId}`) // API 요청
+      .get(`${process.env.REACT_APP_API_URL}/Content/${postId}`) // API 요청
       .then((response) => {
         setData(response.data); // API에서 받은 데이터를 상태에 저장
       })
