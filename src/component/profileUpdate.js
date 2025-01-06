@@ -28,8 +28,6 @@ function ProfileUpdate() {
       }
     }, [navigate, cookies]);
 
-    console.log(UserId);
-
     useEffect(() => {
       if (UserId) {
         axios
