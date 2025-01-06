@@ -28,7 +28,7 @@ function ProfileUpdate() {
       }
     }, [navigate, cookies]);
 
-    console.log('id : '+UserId);
+    console.log(UserId);
 
     useEffect(() => {
       if (UserId) {
@@ -43,12 +43,10 @@ function ProfileUpdate() {
       }
     }, [UserId]); 
 
-    
-    console.log(userData.profile);
 
   return (
     <div>
-      {/* {userData.profile === null ? (
+       {userData.profile === null ? (
               <img src={Userprofile} className="MyProfile" alt="User Profile" />
             ) : (
               <img src={userData.profile} className="MyProfile" alt="User Profile" />
@@ -60,7 +58,7 @@ function ProfileUpdate() {
             </div>
             <br />
       <hr className="hr"/>
-      <br /> */}
+      <br /> 
     </div>
   );
 }
