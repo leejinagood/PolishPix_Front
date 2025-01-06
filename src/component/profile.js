@@ -67,13 +67,19 @@ function Profile() {
 
   //프로필 수정 라우트 
   const handleProfileUpdateClick = () => {
-    navigate('/profileUpdate', { state: {  } }); // state를 통해 데이터 전달
+    navigate('/profileUpdate'); 
   };
 
   //글 작성 라우트
   const handleWriteClick = () => {
-    navigate('/write', { state: {  } }); // state를 통해 데이터 전달
+    navigate('/write'); 
   };
+  
+  //로그아웃
+  const handleLogOutClick = () => {
+    cookies.remove('LoginToken', {path : '/'},1000)
+    navigate('/')
+  }
   
   return (
     <div>
@@ -87,6 +93,8 @@ function Profile() {
         <p style={{ fontSize: '15px' }}>{userData.email}</p>
         <p style={{ fontSize: '15px' }}>{userData.phone}</p>
         <button className="UpdateButton" onClick={() => handleProfileUpdateClick()}>프로필 수정</button>
+        &nbsp;&nbsp;
+        <button className="UpdateButton" onClick={() => handleLogOutClick()}>로그아웃</button>
       </div>
       <br />
       <hr className="hr" />

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import Userprofile from '../image/userprofile.png';
+import '../css/profileUpdate.css';
 
 function ProfileUpdate() {
   
@@ -41,21 +42,24 @@ function ProfileUpdate() {
       }
     }, [UserId]); 
 
+    // userData가 null일 때 로딩 표시
+    if (!userData) {
+      return <div>로딩 중...</div>;
+    }
 
   return (
     <div>
        {userData.profile === null ? (
-              <img src={Userprofile} className="MyProfile" alt="User Profile" />
-            ) : (
-              <img src={userData.profile} className="MyProfile" alt="User Profile" />
-            )}
-            <div className="MyInfo">
-              <p style={{ fontSize: '20px' }}>{userData.name}</p>
-              <p style={{ fontSize: '15px' }}>{userData.email}</p>
-              <p style={{ fontSize: '15px' }}>{userData.phone}</p>
-            </div>
-            <br />
-      <hr className="hr"/>
+        <img src={Userprofile} className="MyProfile" alt="User Profile" />
+        ) : (
+          <img src={userData.profile} className="MyProfile" alt="User Profile" />
+        )}
+        <div className="MyInfo">
+          <p style={{ fontSize: '20px' }}>{userData.name}</p>
+          <p style={{ fontSize: '15px' }}>{userData.email}</p>
+          <p style={{ fontSize: '15px' }}>{userData.phone}</p>
+        </div>
+        <br />
       <br /> 
     </div>
   );
